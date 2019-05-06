@@ -1,8 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-function easyAStar(reachable, start, end) {
-    var open = {};
-    var close = {};
+export function easyAStar(reachable: (x: number, y: number) => boolean, start: { x: number, y: number }, end: { x: number, y: number }): { x: number, y: number }[] | false {
+    let open: { [key: string]: { pos: { x: number, y: number }, parent: { x: number, y: number } | null, h: number, g: number } } = {};
+    let close: { [key: string]: { pos: { x: number, y: number }, parent: { x: number, y: number } | null, h: number, g: number } } = {};
+
     open[start.x + "_" + start.y] = {
         pos: start,
         parent: null,
@@ -11,11 +10,11 @@ function easyAStar(reachable, start, end) {
     };
     while ((!close[end.x + "_" + end.y]) || Object.keys(open).length <= 0) {
         // open中f最小的（f=g+h）
-        var minF = Number.POSITIVE_INFINITY;
-        var minFkey = "";
-        for (var key in open) {
+        let minF = Number.POSITIVE_INFINITY;
+        let minFkey = "";
+        for (const key in open) {
             if (open.hasOwnProperty(key)) {
-                var f = open[key].g + open[key].h;
+                let f = open[key].g + open[key].h;
                 if (f < minF) {
                     minF = f;
                     minFkey = key;
@@ -25,12 +24,12 @@ function easyAStar(reachable, start, end) {
         // 把找到的open中f最小的放到close中
         close[minFkey] = open[minFkey];
         delete open[minFkey];
-        var curNode = close[minFkey];
+        let curNode = close[minFkey];
         // 把刚放进close的格的四周，放进open
-        var fourDt = [{ x: -1, y: 0 }, { x: 1, y: 0 }, { x: 0, y: -1 }, { x: 0, y: 1 }];
-        for (var index = 0; index < fourDt.length; index++) {
-            var dt = fourDt[index];
-            var tmpPos = { x: curNode.pos.x + dt.x, y: curNode.pos.y + dt.y };
+        let fourDt = [{x:-1, y:0}, {x:1, y:0}, {x:0, y:-1}, {x:0, y:1}];
+        for (let index = 0; index < fourDt.length; index++) {
+            const dt = fourDt[index];
+            let tmpPos = {x:curNode.pos.x + dt.x, y:curNode.pos.y + dt.y};
             if (reachable(tmpPos.x, tmpPos.y)) {
                 if ((!open[tmpPos.x + "_" + tmpPos.y]) || (open[tmpPos.x + "_" + tmpPos.y].g > curNode.g + 1)) {
                     open[tmpPos.x + "_" + tmpPos.y] = {
@@ -38,24 +37,22 @@ function easyAStar(reachable, start, end) {
                         parent: curNode.pos,
                         g: curNode.g + 1,
                         h: Math.abs(end.x - tmpPos.x) + Math.abs(end.y - tmpPos.y)
-                    };
+                    }
                 }
             }
         }
     }
     // 如果找到了 
     if (close[end.x + "_" + end.y]) {
-        var path = [];
+        let path: { x: number, y: number }[] = [];
         path.push(close[end.x + "_" + end.y].pos);
-        var parent_1 = close[end.x + "_" + end.y].parent;
-        while (parent_1) {
-            path.push(parent_1);
-            parent_1 = close[parent_1.x + "_" + parent_1.y].parent;
+        let parent = close[end.x + "_" + end.y].parent;
+        while (parent) {
+            path.push(parent);
+            parent = close[parent.x + "_" + parent.y].parent;
         }
         return path.reverse();
-    }
-    else {
+    } else {
         return false;
     }
 }
-exports.easyAStar = easyAStar;

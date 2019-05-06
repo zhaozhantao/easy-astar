@@ -1,10 +1,11 @@
 {
   "name": "easy-astar",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An a* search path library.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/zhaozhantao/easy-astar/issues"
   },
-  "homepage": "https://github.com/zhaozhantao/easy-astar#readme"
+  "homepage": "https://github.com/zhaozhantao/easy-astar#readme",
+  "devDependencies": {
+    "typescript": "^3.4.5"
+  }
 }
