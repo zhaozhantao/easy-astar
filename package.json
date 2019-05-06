@@ -1,0 +1,25 @@
+{
+  "name": "easy-astar",
+  "version": "1.0.0",
+  "description": "An a* search path library.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhaozhantao/easy-astar.git"
+  },
+  "keywords": [
+    "a*",
+    "astar",
+    "a-star",
+    "pathfind"
+  ],
+  "author": "zhaozhantao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zhaozhantao/easy-astar/issues"
+  },
+  "homepage": "https://github.com/zhaozhantao/easy-astar#readme"
+}
