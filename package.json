@@ -1,10 +1,10 @@
 {
   "name": "easy-astar",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An a* search path library.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --reporter spec",
     "build": "tsc"
   },
   "repository": {
@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/zhaozhantao/easy-astar#readme",
   "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
     "typescript": "^3.4.5"
   }
 }
