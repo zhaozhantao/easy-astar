@@ -1,6 +1,6 @@
 {
   "name": "easy-astar",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An a* search path library.",
   "main": "index.js",
   "scripts": {

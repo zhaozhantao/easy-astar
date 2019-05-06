@@ -1,2 +1,2 @@
 # easy-astar
-An a* search path library.
+An a* search path library.!
